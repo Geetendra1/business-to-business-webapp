@@ -8,17 +8,16 @@ Technology Stack : [
     ] 
 
 ## Expected Features 
-Signin  path="/signin"
-
-Register path="/register"
-HomeScreen  path="/"
-Products "/products" 
-individual Product "/product/:id
-product by Category path="/category/:id"
-Cart path="/cart/:id?"
-Order path="/orders" 
-Individual order path="/order/:id" 
-Payment path="/payment"
+Signin  path="/signin"  
+Register path="/register"  
+HomeScreen  path="/"  
+Products "/products"   
+individual Product "/product/:id  
+product by Category path="/category/:id"  
+Cart path="/cart/:id?"  
+Order path="/orders"   
+Individual order path="/order/:id"   
+Payment path="/payment"  
 
 
 ## Available Scripts
