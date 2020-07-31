@@ -5,11 +5,7 @@ Technology Stack : [
     Nodejs : backend ,  
     MongoDB : database ,  
     Heroku : hosting  
-<<<<<<< HEAD
-    ]
-=======
-    ] 
->>>>>>> 5dc7faa55d1e1bebff4bfcc5d9723ef9c254cba3
+
 
 ## Expected Features 
 Signin  path="/signin"  
