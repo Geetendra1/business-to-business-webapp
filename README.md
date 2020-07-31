@@ -5,19 +5,23 @@ Technology Stack : [
     Nodejs : backend ,  
     MongoDB : database ,  
     Heroku : hosting  
+<<<<<<< HEAD
     ]
+=======
+    ] 
+>>>>>>> 5dc7faa55d1e1bebff4bfcc5d9723ef9c254cba3
 
 ## Expected Features 
-Signin  path="/signin"
-Register path="/register"
-HomeScreen  path="/"
-Products "/products" 
-individual Product "/product/:id
-product by Category path="/category/:id"
-Cart path="/cart/:id?"
-Order path="/orders" 
-Individual order path="/order/:id" 
-Payment path="/payment"
+Signin  path="/signin"  
+Register path="/register"  
+HomeScreen  path="/"  
+Products "/products"   
+individual Product "/product/:id  
+product by Category path="/category/:id"  
+Cart path="/cart/:id?"  
+Order path="/orders"   
+Individual order path="/order/:id"   
+Payment path="/payment"  
 
 
 ## Available Scripts
