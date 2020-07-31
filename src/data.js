@@ -14,7 +14,7 @@ export default  {
       _id: '2',
       name: 'Fit Shirt',
       category: 'Shirts',
-      image: '/images/d1.jpg',
+      image: '/images/d2.jpg',
       price: 50,
       brand: ' Nike',
       rating: 4.2,
@@ -24,7 +24,7 @@ export default  {
       _id: '3',
       name: 'Best Pants',
       category: 'Pants',
-      image: '/images/d1.jpg',
+      image: '/images/d3.jpg',
       price: 70,
       brand: ' Nike',
       rating: 4.5,
@@ -33,11 +33,32 @@ export default  {
       _id: '4',
       name: 'Best Pants',
       category: 'Pants',
-      image: '/images/d1.jpg',
+      image: '/images/p1.jpg',
       price: 70,
       brand: ' Nike',
       rating: 4.5,
       numReviews: 8
     },
+    {
+      _id: '3',
+      name: ' Pants1',
+      category: 'Pants',
+      image: '/images/p2.jpg',
+      price: 70,
+      brand: ' Nike',
+      rating: 4.5,
+      numReviews: 8
+    }
+    ,
+    {
+      _id: '3',
+      name:  'Pants',
+      category: 'Pants',
+      image: '/images/p3.jpg',
+      price: 70,
+      brand: ' Nike',
+      rating: 4.5,
+      numReviews: 8
+    }
   ]
 }

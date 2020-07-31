@@ -1,10 +1,10 @@
 (THIS IS A ONGOING PROJECT)
 ## AMAZON CLONE
-Technology Stack : [
-    React : frontend ,
-    Nodejs : backend ,
-    MongoDB : database ,
-    Heroku : hosting
+Technology Stack : [  
+    React : frontend ,  
+    Nodejs : backend ,  
+    MongoDB : database ,  
+    Heroku : hosting  
     ]
 
 ## Expected Features 

@@ -7,6 +7,9 @@ body{
   height: 100vh;
   margin: 0;
 }
+#root {
+  height:100%
+}
 .grid-container{
   display: grid;
   grid-template-areas: 
