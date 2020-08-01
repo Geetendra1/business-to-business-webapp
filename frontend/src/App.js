@@ -1,10 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Route , Link } from "react-router-dom";
-import data from './data'
+
 import HomeScreen from './screens/HomeScreen'
 import ProductScreen from './screens/ProductScreen'
+import CartScreen from './screens/CartScreen'
 function App() {
 
 const openMenu = () => {
@@ -26,7 +26,7 @@ const  closeMenu = () =>  {
         <Link to="/">amazona</Link>
       </div>
       <div className="header-links">
-        <a href="cart.html">Cart</a>
+        <a href="/cart">Cart</a>
         <a href="signin.html">Sign In</a>
       </div>
     </header>
@@ -47,6 +47,7 @@ const  closeMenu = () =>  {
     <main className="main">
       <div className="content">
       <Route path="/product/:id" component={ProductScreen} />
+      <Route path="/cart/:id?" component={CartScreen} />
       <Route path="/" exact={true} component={HomeScreen} />
       </div>
 
