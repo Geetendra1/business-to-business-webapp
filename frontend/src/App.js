@@ -1,11 +1,19 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter, Route , Link } from "react-router-dom";
-
+import {useSelector} from 'react-redux'
 import HomeScreen from './screens/HomeScreen'
 import ProductScreen from './screens/ProductScreen'
+import ProductsScreen from './screens/ProductsScreen'
 import CartScreen from './screens/CartScreen'
+import SigninScreen from './screens/SigninScreen'
+import RegisterScreen from './screens/RegisterScreen'
 function App() {
+
+
+const userSignin = useSelector(state=> state.userSignin);
+const {userInfo} = userSignin
+
 
 const openMenu = () => {
       document.querySelector(".sidebar").classList.add("open");
@@ -27,7 +35,10 @@ const  closeMenu = () =>  {
       </div>
       <div className="header-links">
         <a href="/cart">Cart</a>
-        <a href="signin.html">Sign In</a>
+       {
+         userInfo ? <Link to="/profile">{userInfo.name}</Link>
+                  : <Link to="/signin">Sign In</Link>
+       }
       </div>
     </header>
     <aside className="sidebar">
@@ -46,9 +57,12 @@ const  closeMenu = () =>  {
     </aside>
     <main className="main">
       <div className="content">
+      <Route path="/" exact={true} component={HomeScreen} />
+      <Route path="/products" component={ProductsScreen} />
+      <Route path="/signin" component={SigninScreen} />
+      <Route path="/register" component={RegisterScreen} />
       <Route path="/product/:id" component={ProductScreen} />
       <Route path="/cart/:id?" component={CartScreen} />
-      <Route path="/" exact={true} component={HomeScreen} />
       </div>
 
     </main>
