@@ -7,6 +7,9 @@ import userRoute from './routes/userRoute'
 import productRoute from './routes/productRoute';
 import bodyParser from 'body-parser'
 
+const cookieParser = require('cookie-parser')
+
+
 dotenv.config();
 
 const mongodbURL = config.MONGODB_URL;
@@ -18,6 +21,7 @@ mongoose.connect(mongodbURL, {
 
 const app = express() 
 app.use(bodyParser.json())
+app.use(cookieParser())
 
 app.use("/api/users", userRoute)
 app.use('/api/products', productRoute);

@@ -5,8 +5,8 @@ import {
   saveProduct,
   listProducts,
   deleteProduct,
+  listAdminProducts,
 } from '../actions/productActions';
-
 function ProductsScreen(props) {
   const [modalVisible, setModalVisible] = useState(false);
   const [id, setId] = useState('');
@@ -18,8 +18,10 @@ function ProductsScreen(props) {
   const [countInStock, setCountInStock] = useState('');
   const [description, setDescription] = useState('');
   const [uploading, setUploading] = useState(false);
-  const productList = useSelector(state => state.productList)
-  const {products, loading, error} = productList;
+  // const productList = useSelector(state => state.productList)
+  const productAdminList = useSelector(state => state.productAdminList)
+  // const {products, loading, error} = productList;
+   const {products, loading, error} = productAdminList;
   const productSave = useSelector((state) => state.productSave);
   const {
     loading: loadingSave,
@@ -41,7 +43,7 @@ function ProductsScreen(props) {
     if (successSave) {
       setModalVisible(false);
     }
-    dispatch(listProducts());
+    dispatch(listAdminProducts());
     return () => {
       //
     };

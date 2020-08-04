@@ -1,7 +1,7 @@
 import express from 'express';
 import Product from '../modals/productModal';
 import { isAuth, isAdmin } from '../util';
-
+const cookieParser = require('cookie-parser')
 const router = express.Router();
 
 // router.get('/', async (req, res) => {
@@ -25,8 +25,18 @@ const router = express.Router();
 //   res.send(products);
 // });
 
-router.get("/", async (req,res) => {
-    const products = await Product.find({})
+
+router.get("/admin/products", async (req,res) => {
+    const userInfo = JSON.parse(req.cookies['userInfo'])
+    const userName = userInfo.name
+    const products = await Product.find({"owner":userName})
+    res.send(products)
+})
+
+router.get("/", isAdmin , async (req,res) => {
+
+    const products = await Product.find()
+    
     res.send(products)
 })
 
@@ -96,6 +106,9 @@ router.delete('/:id', isAuth, isAdmin, async (req, res) => {
 });
 
 router.post('/', isAuth, isAdmin, async (req, res) => {
+    const userInfo = JSON.parse(req.cookies['userInfo'])
+    const userName = userInfo.name
+    
   const product = new Product({
     name: req.body.name,
     price: req.body.price,
@@ -107,13 +120,46 @@ router.post('/', isAuth, isAdmin, async (req, res) => {
     rating: req.body.rating,
     numReviews: req.body.numReviews,
   });
-  const newProduct = await product.save();
+  try {
+  const newProduct = await product.save()
+  const recentProduct = await Product.update({"name": product.name},{$set:{"owner":userName}})
   if (newProduct) {
     return res
       .status(201)
       .send({ message: 'New Product Created', data: newProduct });
   }
   return res.status(500).send({ message: ' Error in Creating Product.' });
+    
+  } catch (error) {
+    console.log({msg:"error"});
+  }
 });
+
+// router.post('/', isAuth, isAdmin, async (req, res) => {  
+//   const product = new Product({
+//     name: req.body.name,
+//     price: req.body.price,
+//     image: req.body.image,
+//     brand: req.body.brand,
+//     category: req.body.category,
+//     countInStock: req.body.countInStock,
+//     description: req.body.description,
+//     rating: req.body.rating,
+//     numReviews: req.body.numReviews,
+//   });
+//   try {
+//   const newProduct = await product.save()
+//   if (newProduct) {
+//     return res
+//       .status(201)
+//       .send({ message: 'New Product Created', data: newProduct });
+//   }
+//   return res.status(500).send({ message: ' Error in Creating Product.' });
+    
+//   } catch (error) {
+//     console.log({msg:"error"});
+//   }
+// });
+
 
 export default router;

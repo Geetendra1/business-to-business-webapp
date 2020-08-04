@@ -1,9 +1,7 @@
 import express from "express";
 import User from '../modals/userModals'
 import { getToken} from '../util';
-
 const router = express.Router()
-
 
 router.post('/signin', async (req, res) => {
   const signinUser = await User.findOne({
@@ -47,8 +45,8 @@ router.post('/register', async (req, res) => {
 router.get('/createadmin', async (req, res) => {
   try {
     const user = new User({
-      name: 'Geetendra',
-      email: 'sengargeetendr23@gmail.com',
+      name: 'Shree sir',
+      email: 'sengargeetendra3@gmail.com',
       password: '1234',
       isAdmin: true,
     });
