@@ -8,9 +8,9 @@ Technology Stack : [
 
 
 ## Expected Features 
-Signin  path="/signin"  (DONE)
-Register path="/register"  
-HomeScreen  path="/"  (DONE)
+Signin  path="/signin"  (DONE)  
+Register path="/register"    
+HomeScreen  path="/"  (DONE)  
 Products "/products"   (DONE)
 individual Product "/product/:id  (DONE)
 product by Category path="/category/:id"  (DONE)
