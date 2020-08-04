@@ -25,7 +25,7 @@ const router = express.Router();
 //   res.send(products);
 // });
 
-
+// ------------Admin Products---------------------// 
 router.get("/admin/products", async (req,res) => {
     const userInfo = JSON.parse(req.cookies['userInfo'])
     const userName = userInfo.name
@@ -33,13 +33,17 @@ router.get("/admin/products", async (req,res) => {
     res.send(products)
 })
 
-router.get("/", isAdmin , async (req,res) => {
+
+// ------------Non-Admin Products----------------//
+router.get("/",  async (req,res) => {
 
     const products = await Product.find()
     
     res.send(products)
 })
 
+
+// --------------Product by Id ----------------------//
 router.get('/:id', async (req, res) => {
   const product = await Product.findOne({ _id: req.params.id });
   if (product) {
@@ -74,6 +78,7 @@ router.get('/:id', async (req, res) => {
 // });
 
 
+// -----------------Update PRoduct(ADmin)----------------//
 router.put('/:id', isAuth, isAdmin, async (req, res) => {
   const productId = req.params.id;
   const product = await Product.findById(productId);
@@ -95,6 +100,8 @@ router.put('/:id', isAuth, isAdmin, async (req, res) => {
   return res.status(500).send({ message: ' Error in Updating Product.' });
 });
 
+
+// -----------------------Delete-Product(Admin)--------------//
 router.delete('/:id', isAuth, isAdmin, async (req, res) => {
   const deletedProduct = await Product.findById(req.params.id);
   if (deletedProduct) {
@@ -105,6 +112,8 @@ router.delete('/:id', isAuth, isAdmin, async (req, res) => {
   }
 });
 
+
+// ----------------------Add PRoduct(Admin)-------------------//
 router.post('/', isAuth, isAdmin, async (req, res) => {
     const userInfo = JSON.parse(req.cookies['userInfo'])
     const userName = userInfo.name

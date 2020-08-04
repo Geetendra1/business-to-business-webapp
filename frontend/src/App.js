@@ -8,6 +8,10 @@ import ProductsScreen from './screens/ProductsScreen'
 import CartScreen from './screens/CartScreen'
 import SigninScreen from './screens/SigninScreen'
 import RegisterScreen from './screens/RegisterScreen'
+import ShippingScreen from './screens/ShippingScreen'
+import PaymentScreen from './screens/PaymentScreen'
+import PlaceOrderScreen from './screens/PlaceOrderScreen'
+import OrderScreen from './screens/OrderScreen'
 function App() {
 
 
@@ -59,10 +63,14 @@ const  closeMenu = () =>  {
       <div className="content">
       <Route path="/" exact={true} component={HomeScreen} />
       <Route path="/products" component={ProductsScreen} />
+      <Route path="/order/:id" component={OrderScreen} />
+      <Route path="/placeorder" component={PlaceOrderScreen} />
+      <Route path="/payment" component={PaymentScreen} />
       <Route path="/signin" component={SigninScreen} />
       <Route path="/register" component={RegisterScreen} />
       <Route path="/product/:id" component={ProductScreen} />
       <Route path="/cart/:id?" component={CartScreen} />
+      <Route path="/shipping" component={ShippingScreen} />
       </div>
 
     </main>
