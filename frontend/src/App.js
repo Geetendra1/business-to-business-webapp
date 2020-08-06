@@ -14,6 +14,7 @@ import PlaceOrderScreen from './screens/PlaceOrderScreen'
 import OrderScreen from './screens/OrderScreen'
 import ProfileScreen from './screens/ProfileScreen'
 import OrdersScreen from './screens/OrdersScreen'
+import OrderScreenAdmin from './screens/OrderScreenAdmin'
 function App() {
 
 
@@ -86,6 +87,7 @@ const  closeMenu = () =>  {
       <Route path="/shipping" component={ShippingScreen} />
       <Route path="/profile" component={ProfileScreen} />
       <Route path="/orders" component={OrdersScreen} />
+      <Route path="/admin/order/:id" component={OrderScreenAdmin} />
 
       </div>
 
