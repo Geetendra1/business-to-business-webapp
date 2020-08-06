@@ -43,6 +43,9 @@ function ProductScreen (props) {
                 <li>
                   Price: <b>${product.price}</b>
                 </li>
+                                <li>
+                  Owner: <b>{product.owner}</b>
+                </li>
                 <li>
                   Description:
                   <div>{product.description}</div>

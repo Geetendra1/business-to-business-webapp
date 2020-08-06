@@ -51,7 +51,9 @@ function CartScreen(props) {
                     <Link to={"/product/" + item.product}>
                       {item.name}
                     </Link>
-
+                    <div>
+                      {item.owner}
+                    </div>
                   </div>
                   <div>
                     Qty:

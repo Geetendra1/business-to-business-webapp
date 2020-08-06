@@ -10,6 +10,7 @@ function PlaceOrderScreen(props) {
   const { loading, success, error, order } = orderCreate;
 
   const { cartItems, shipping, payment } = cart;
+  
   if (!shipping.address) {
     props.history.push("/shipping");
   } else if (!payment.paymentMethod) {
@@ -19,11 +20,11 @@ function PlaceOrderScreen(props) {
   const shippingPrice = itemsPrice > 100 ? 0 : 10;
   const taxPrice = 0.15 * itemsPrice;
   const totalPrice = itemsPrice + shippingPrice + taxPrice;
-
   const dispatch = useDispatch();
 
   const placeOrderHandler = () => {
     // create an order
+    debugger
     dispatch(createOrder({
       orderItems: cartItems, shipping, payment, itemsPrice, shippingPrice,
       taxPrice, totalPrice
@@ -36,6 +37,7 @@ function PlaceOrderScreen(props) {
 
   }, [success]);
 
+  debugger
   return <div>
     <CheckoutSteps step1 step2 step3 step4 ></CheckoutSteps>
     <div className="placeorder">
@@ -77,12 +79,12 @@ function PlaceOrderScreen(props) {
                       <img src={item.image} alt="product" />
                     </div>
                     <div className="cart-name">
-                      <div>
+                    
+                      {item.owner}
                         <Link to={"/product/" + item.product}>
                           {item.name}
                         </Link>
-
-                      </div>
+                      
                       <div>
                         Qty: {item.qty}
                       </div>
@@ -104,7 +106,7 @@ function PlaceOrderScreen(props) {
             <button className="button primary full-width" onClick={placeOrderHandler} >Place Order</button>
           </li>
           <li>
-            <h3>Order Summary</h3>
+            <h3>Order Summar</h3>
           </li>
           <li>
             <div>Items</div>
