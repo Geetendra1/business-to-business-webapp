@@ -4,10 +4,23 @@ import { isAuth, isAdmin } from '../util';
 
 const router = express.Router();
 
+
+// Admin orders
 router.get("/", isAuth, async (req, res) => {
-  const orders = await Order.find({}).populate('user');
+  const userInfo = JSON.parse(req.cookies['userInfo'])
+  const userName = userInfo.name
+  console.log(userName);
+  const orders = await Order.find({"orderItems.owner" : userName}).populate('user');
+  const owner = await Order.find({"orderItems.owner":"geetendra"})
+  console.log(owner);
   res.send(orders);
 });
+
+// Non-admin Orders
+// router.get("/", isAuth, async (req, res) => {
+//   const orders = await Order.find({}).populate('user');
+//   res.send(orders);
+// });
 
 
 router.get("/mine", isAuth, async (req, res) => {
