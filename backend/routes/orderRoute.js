@@ -4,15 +4,13 @@ import { isAuth, isAdmin } from '../util';
 
 const router = express.Router();
 
-
+// db.orders.find({"orderItems.owner":"geetendra"},{_id:0, orderItems:{$elemMatch:{owner:"geetendra"}}}).pretty()
+//  db.orders.find({$and:[{"_id": ObjectId("5f2d5d1174b0932150874217")}, {"orderItems.owner":"geetendra"}]},  {_id:0, orderItems:{$elemMatch:{owner:"geetendra"}}}).pretty()
 // Admin orders
 router.get("/", isAuth, async (req, res) => {
   const userInfo = JSON.parse(req.cookies['userInfo'])
   const userName = userInfo.name
-  console.log(userName);
   const orders = await Order.find({"orderItems.owner" : userName}).populate('user');
-  const owner = await Order.find({"orderItems.owner":"geetendra"})
-  console.log(owner);
   res.send(orders);
 });
 
@@ -36,6 +34,18 @@ router.get("/:id", isAuth, async (req, res) => {
     res.status(404).send("Order Not Found.")
   }
 });
+
+// -----------Admin Detail Product
+// router.get("/Admin/:id", isAuth, async (req, res) => {
+//   const userInfo = JSON.parse(req.cookies['userInfo'])
+//   const userName = userInfo.name
+//   const order = await Order.findOne({$and:[{ _id: req.params.id }, {"orderItems.owner":userName}]},{_id:0, orderItems:{$elemMatch:{owner:userName}}});
+//   if (order) {
+//     res.send(order);
+//   } else {
+//     res.status(404).send("Order Not Found.")
+//   }
+// });
 
 router.delete("/:id", isAuth, isAdmin, async (req, res) => {
   const order = await Order.findOne({ _id: req.params.id });
