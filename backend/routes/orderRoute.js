@@ -36,16 +36,16 @@ router.get("/:id", isAuth, async (req, res) => {
 });
 
 // -----------Admin Detail Product
-// router.get("/Admin/:id", isAuth, async (req, res) => {
-//   const userInfo = JSON.parse(req.cookies['userInfo'])
-//   const userName = userInfo.name
-//   const order = await Order.findOne({$and:[{ _id: req.params.id }, {"orderItems.owner":userName}]},{_id:0, orderItems:{$elemMatch:{owner:userName}}});
-//   if (order) {
-//     res.send(order);
-//   } else {
-//     res.status(404).send("Order Not Found.")
-//   }
-// });
+router.get("/Admin/:id", isAuth, async (req, res) => {
+  const userInfo = JSON.parse(req.cookies['userInfo'])
+  const userName = userInfo.name
+  const order = await Order.findOne({$and:[{ _id: req.params.id }, {"orderItems.owner":userName}]},{_id:0, orderItems:{$elemMatch:{owner:userName}}});
+  if (order) {
+    res.send(order);
+  } else {
+    res.status(404).send("Order Not Found.")
+  }
+});
 
 router.delete("/:id", isAuth, isAdmin, async (req, res) => {
   const order = await Order.findOne({ _id: req.params.id });

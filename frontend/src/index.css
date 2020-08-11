@@ -1,26 +1,32 @@
-html{
+html {
   font-size: 62.5%; /* 16px * 62.5 = 10px = 1rem */
   box-sizing: border-box;
 }
-body{
+body {
   font: 1.6rem Helvetica;
   height: 100vh;
   margin: 0;
 }
-#root {
-  height:100%
+button {
+  font-size: 1.6rem;
 }
-.grid-container{
+.full-width {
+  width: 100%;
+}
+#root {
+  height: 100%;
+}
+.grid-container {
   display: grid;
-  grid-template-areas: 
-  "header"
-  "main"
-  "footer";
+  grid-template-areas:
+    'header'
+    'main'
+    'footer';
   grid-template-columns: 1fr;
   grid-template-rows: 5rem 1fr 5rem;
   height: 100%;
 }
-.header{
+.header {
   grid-area: header;
   background-color: #203040;
   color: #ffffff;
@@ -29,25 +35,24 @@ body{
   align-items: center;
   padding: 0.5rem;
 }
-.brand a{
+.brand a {
   color: #ffffff;
   font-size: 3rem;
   font-weight: bold;
   text-decoration: none;
 }
-.header-links a{
-  color:#ffffff;
+.header-links a {
+  color: #ffffff;
   text-decoration: none;
   padding: 1rem;
-
 }
-.header-links a:hover{
-  color:#ff8000;
+.header-links a:hover {
+  color: #ff8000;
 }
-.main{
+.main {
   grid-area: main;
 }
-.footer{
+.footer {
   grid-area: footer;
   background-color: #203040;
   color: #ffffff;
@@ -55,11 +60,11 @@ body{
   justify-content: center;
   align-items: center;
 }
-a{
+a {
   text-decoration: none;
 }
-a:hover{
-  color:#ff8000
+a:hover {
+  color: #ff8000;
 }
 /* Home Screen */
 .products {
@@ -74,44 +79,71 @@ a:hover{
   flex: 0 1 34rem;
   margin: 1rem;
   height: 50rem;
-  border-bottom: .1rem #c0c0c0 solid;
+  border-bottom: 0.1rem #c0c0c0 solid;
 }
-.product{
+.product {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
 }
-.product-name{
+.product-name {
   font-size: 2rem;
   font-weight: bold;
 }
-.product-brand{
+.product-brand {
   font-size: 1.2rem;
-  color:#808080;
+  color: #808080;
 }
-.product-price{
+.product-price {
   font-size: 2rem;
   font-weight: bold;
 }
-.product-image{
+.product-image {
   max-width: 34rem;
   max-height: 34rem;
 }
-.product-rating{
+.product-rating {
   margin-bottom: 1rem;
 }
+/* Reviews */
+ul.review {
+  list-style-type: none;
+  padding: 0;
+}
+.review li {
+  margin: 1rem;
+  margin-bottom: 2rem;
+}
+.review li > div {
+  margin: 0.5rem;
+}
+
+/* Rating */
+.rating span {
+  color: #ffb901;
+  font-size: 1.8rem;
+  margin: 0.1rem;
+}
+.rating span:last-child {
+  color: #444444;
+  font-size: 1.4rem;
+}
+a > .rating > span:last-child {
+  color: #0000ff;
+}
+
 /* Sidebar */
 
 .brand button {
   font-size: 3rem;
-  padding: .5rem;
+  padding: 0.5rem;
   background: none;
   border: none;
-  color:#ffffff;
+  color: #ffffff;
   cursor: pointer;
 }
-.sidebar{
+.sidebar {
   position: fixed;
   transition: all 0.5s;
   transform: translateX(-30rem);
@@ -119,22 +151,22 @@ a:hover{
   background-color: #f0f0f0;
   height: 100%;
 }
-.sidebar.open{
+.sidebar.open {
   transform: translateX(0);
 }
 
-.sidebar-close-button{
+.sidebar-close-button {
   border-radius: 50%;
-  border: .1rem #000000 solid;
+  border: 0.1rem #000000 solid;
   width: 3rem;
   height: 3rem;
-  padding: .5rem;
+  padding: 0.5rem;
   font-size: 2rem;
   padding-top: 0;
   cursor: pointer;
   position: absolute;
-  right: .5rem;
-  top: 1.5rem
+  right: 0.5rem;
+  top: 1.5rem;
 }
 
 /* Product Details */
@@ -182,13 +214,10 @@ a:hover{
   flex-direction: column;
 }
 .button {
-  padding: 0.7rem;
+  padding: 1rem;
   border: 0.1rem #808080 solid;
   border-radius: 0.5rem;
   cursor: pointer;
-}
-.full-width {
-  width: 100%;
 }
 .button:hover {
   border: 0.1rem #404040 solid;
@@ -202,7 +231,6 @@ a:hover{
 .text-center {
   text-align: center;
 }
-
 /* Cart */
 
 .cart {
@@ -434,24 +462,4 @@ tbody > tr:nth-child(odd) {
 
 .categories a:hover {
   background-color: #c0c0c0;
-}
-
-/* admin */
-.dropdown {
-  display: inline-block;
-  position: relative;
-}
-.dropdown-content {
-  position: absolute;
-  display: none;
-  right: 0;
-  padding: 1rem;
-  list-style-type: none;
-  z-index: 1;
-  background-color: #203040;
-  margin: 0;
-  margin-top: 0.4rem;
-}
-.dropdown:hover .dropdown-content {
-  display: block;
 }

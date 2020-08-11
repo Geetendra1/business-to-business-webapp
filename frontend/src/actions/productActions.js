@@ -3,7 +3,9 @@ PRODUCT_DETAILS_REQUEST,PRODUCT_DETAILS_SUCCESS,PRODUCT_DETAILS_FAIL,
 PRODUCT_SAVE_REQUEST,PRODUCT_SAVE_SUCCESS,PRODUCT_SAVE_FAIL,
 PRODUCT_DELETE_REQUEST,PRODUCT_DELETE_SUCCESS,PRODUCT_DELETE_FAIL,
 ADMIN_PRODUCT_LIST_REQUEST,ADMIN_PRODUCT_LIST_SUCCESS,ADMIN_PRODUCT_LIST_FAIL,
-
+  PRODUCT_REVIEW_SAVE_REQUEST,
+  PRODUCT_REVIEW_SAVE_FAIL,
+  PRODUCT_REVIEW_SAVE_SUCCESS,
 } from '../constants/productConstants'
 import  axios  from "axios";
 import  Axios  from "axios";
@@ -18,14 +20,25 @@ const listAdminProducts = () => async (dispatch) => {
     }
 };
 
-const listProducts = () => async (dispatch) => {
-    try {
-        dispatch({type: PRODUCT_LIST_REQUEST});
-        const { data } = await axios.get("/api/products");
-        dispatch({type: PRODUCT_LIST_SUCCESS, payload: data})
-    } catch(error) {
-         dispatch({type: PRODUCT_LIST_FAIL, payload: error.message})
-    }
+const listProducts = (
+  category = "",
+  searchKeyword = "",
+  sortOrder = ""
+) => async (dispatch) => {
+  try {
+    dispatch({ type: PRODUCT_LIST_REQUEST });
+    const { data } = await axios.get(
+      '/api/products?category=' +
+        category +
+        '&searchKeyword=' +
+        searchKeyword +
+        '&sortOrder=' +
+        sortOrder
+    );
+    dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: PRODUCT_LIST_FAIL, payload: error.message });
+  }
 };
 
 const saveProduct = (product) => async (dispatch, getState) => {
@@ -86,5 +99,28 @@ const deleteProduct = (productId) => async (dispatch, getState) => {
   }
 };
 
+const saveProductReview = (productId, review) => async (dispatch, getState) => {
+  try {
+    const {
+      userSignin: {
+        userInfo: { token },
+      },
+    } = getState();
+    dispatch({ type: PRODUCT_REVIEW_SAVE_REQUEST, payload: review });
+    const { data } = await axios.post(
+      `/api/products/${productId}/reviews`,
+      review,
+      {
+        headers: {
+          Authorization: 'Bearer ' + token,
+        },
+      }
+    );
+    dispatch({ type: PRODUCT_REVIEW_SAVE_SUCCESS, payload: data });
+  } catch (error) {
+    // report error
+    dispatch({ type: PRODUCT_REVIEW_SAVE_FAIL, payload: error.message });
+  }
+};
 
-export {listProducts, detailsProduct,saveProduct,deleteProduct,listAdminProducts}
+export {listProducts, detailsProduct,saveProduct,deleteProduct,listAdminProducts,saveProductReview}

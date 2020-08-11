@@ -3,7 +3,8 @@ import {
   ORDER_DETAILS_REQUEST, ORDER_DETAILS_SUCCESS, ORDER_DETAILS_FAIL,
   ORDER_PAY_REQUEST, ORDER_PAY_SUCCESS, ORDER_PAY_FAIL,
   MY_ORDER_LIST_REQUEST, MY_ORDER_LIST_SUCCESS, MY_ORDER_LIST_FAIL,
-  ORDER_LIST_REQUEST, ORDER_LIST_SUCCESS, ORDER_LIST_FAIL, ORDER_DELETE_REQUEST, ORDER_DELETE_SUCCESS, ORDER_DELETE_FAIL
+  ORDER_LIST_REQUEST, ORDER_LIST_SUCCESS, ORDER_LIST_FAIL, ORDER_DELETE_REQUEST, ORDER_DELETE_SUCCESS, ORDER_DELETE_FAIL,
+     ORDER_ADMIN_DETAILS_SUCCESS,ORDER_ADMIN_DETAILS_FAIL,ORDER_ADMIN_DETAILS_REQUEST
 } from "../constants/orderConstants";
 
 
@@ -33,6 +34,24 @@ function orderDetailsReducer(state = {
     case ORDER_DETAILS_SUCCESS:
       return { loading: false, order: action.payload };
     case ORDER_DETAILS_FAIL:
+      return { loading: false, error: action.payload };
+    default: return state;
+  }
+}
+
+//------ADMIN DETAIL ORDER REDUCER-----------\\
+
+function orderDetailsAdminReducer(state = {
+  order: {
+    orderItems: [],
+  }
+}, action) {
+  switch (action.type) {
+    case ORDER_ADMIN_DETAILS_REQUEST:
+      return { loading: true };
+    case ORDER_ADMIN_DETAILS_SUCCESS:
+      return { loading: false, order: action.payload };
+    case ORDER_ADMIN_DETAILS_FAIL:
       return { loading: false, error: action.payload };
     default: return state;
   }
@@ -104,5 +123,5 @@ function orderDeleteReducer(state = {
 }
 export {
   orderCreateReducer, orderDetailsReducer,
-  orderPayReducer, myOrderListReducer, orderListReducer, orderDeleteReducer
+  orderPayReducer, myOrderListReducer, orderListReducer, orderDeleteReducer,orderDetailsAdminReducer
 }

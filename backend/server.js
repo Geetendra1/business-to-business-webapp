@@ -8,8 +8,8 @@ import userRoute from './routes/userRoute'
 import productRoute from './routes/productRoute';
 import orderRoute from './routes/orderRoute';
 const cookieParser = require('cookie-parser')
-
-
+import uploadRoute from './routes/uploadRoute';
+import path from 'path';
 dotenv.config();
 
 const mongodbURL = config.MONGODB_URL;
@@ -26,19 +26,11 @@ app.use(cookieParser())
 app.use("/api/users", userRoute)
 app.use('/api/products', productRoute);
 app.use('/api/orders', orderRoute);
+app.use('/api/uploads', uploadRoute);
 app.get("/api/config/paypal", (req,res) => {
     res.send(config.PAYPAL_CLIENT_ID);
 })
-// app.get("/api/products/:id" , (req,res) => {
-//     const productId = req.params.id;
-//     const product = data.products.find(x=>x._id === productId);
-//     if(product)
-//         res.send(product)
-//     else
-//         res.status(404).send({msg: "Product not found"})
-// })
-// app.get("/api/products" , (req,res) => {
-//     res.send(data.products)
-// })
+app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+
 
 app.listen(5000, () => { console.log("server is running at port http://localhost:5000");})

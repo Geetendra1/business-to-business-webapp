@@ -62,20 +62,20 @@ const  closeMenu = () =>  {
     <aside className="sidebar">
       <h3>Shopping Categories</h3>
       <button className="sidebar-close-button" onClick={closeMenu}>x</button>
-      <ul>
-        <li>
-          <a href="index.html">Pants</a>
-        </li>
+          <ul className="categories">
+            <li>
+              <Link to="/category/pants">Pants</Link>
+            </li>
 
-        <li>
-          <a href="index.html">Shirts</a>
-        </li>
-
-      </ul>
+            <li>
+              <Link to="/category/phirts">Shirts</Link>
+            </li>
+          </ul>
     </aside>
     <main className="main">
       <div className="content">
       <Route path="/" exact={true} component={HomeScreen} />
+      <Route path="/category/:id" component={HomeScreen} />
       <Route path="/products" component={ProductsScreen} />
       <Route path="/order/:id" component={OrderScreen} />
       <Route path="/placeorder" component={PlaceOrderScreen} />
