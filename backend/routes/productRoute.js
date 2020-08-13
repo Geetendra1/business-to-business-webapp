@@ -68,12 +68,14 @@ router.post('/:id/reviews', isAuth, async (req, res) => {
       rating: Number(req.body.rating),
       comment: req.body.comment,
     };
+    console.log("product",product);
     product.reviews.push(review);
     product.numReviews = product.reviews.length;
     product.rating =
       product.reviews.reduce((a, c) => c.rating + a, 0) /
       product.reviews.length;
     const updatedProduct = await product.save();
+    console.log("updatedproduct",updatedProduct);
     res.status(201).send({
       data: updatedProduct.reviews[updatedProduct.reviews.length - 1],
       message: 'Review saved successfully.',

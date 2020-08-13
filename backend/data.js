@@ -1,7 +1,7 @@
 export default {
-  products: [
+  tasks: [
     {
-      _id: '1',
+      projectid: '1',
       name: 'Slim Shirt',
       category: 'Shirts',
       image: '/images/d1.jpg',
@@ -12,7 +12,7 @@ export default {
       countInStock:6
     },
     {
-      _id: '2',
+      projectid: '2',
       name: 'Fit Shirt',
       category: 'Shirts',
       image: '/images/d1.jpg',
@@ -25,7 +25,7 @@ export default {
 
     },
     {
-      _id: '3',
+      projectid: '3',
       name: 'Best Pants',
       category: 'Pants',
       image: '/images/d1.jpg',
@@ -35,7 +35,7 @@ export default {
       numReviews: 8,
       countInStock:6
     }, {
-      _id: '4',
+      projectid: '4',
       name: 'Best Pants',
       category: 'Pants',
       image: '/images/d1.jpg',
@@ -45,5 +45,10 @@ export default {
       numReviews: 8,
       countInStock:6
     },
+  ],
+  project:[
+    {
+
+    }
   ]
 }
