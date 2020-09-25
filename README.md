@@ -15,9 +15,9 @@ Products "/products"   (DONE)
 individual Product "/product/:id  (DONE)  
 product by Category path="/category/:id"  (DONE)  
 Cart path="/cart/:id?"  (DONE)  
-Order path="/orders"     
-Individual order path="/order/:id"     
-Payment path="/payment"    
+Order path="/orders" (DONE)  
+Individual order path="/order/:id" (DONE)  
+Payment path="/payment" (DONE)  
 
 
 ## Available Scripts
